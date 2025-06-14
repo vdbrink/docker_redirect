@@ -1,0 +1,7 @@
+version: '3'
+services:
+  redirect:
+    build: https://raw.githubusercontent.com/vdbrink/docker_redirect/refs/heads/main/Dockerfile
+    environment:
+      - REDIRECT_URL=homeassistant://navigate/
+      - PORT=8888
