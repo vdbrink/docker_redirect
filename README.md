@@ -11,7 +11,9 @@ in the companion app. The link should be `homeassistant://navigate/dashboard-mob
 
 Run the container from the example:
 ```
-$ docker run --rm -d -e REDIRECT_URL=homeassistant://navigate/ $PORT=8888 -p 8888:8888 https://raw.githubusercontent.com/vdbrink/docker_redirect/refs/heads/main/Dockerfile
+$ docker run --rm -d -e REDIRECT_URL=homeassistant://navigate $PORT=8888 -p 8888:8888 .
 ```
+
+You can find [here](docker-compose.yaml) the docker-compose.yml file for this example.
 
 More details about deep linking in Home Assistant can be found here: https://companion.home-assistant.io/docs/integrations/url-handler/
