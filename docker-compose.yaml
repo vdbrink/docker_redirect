@@ -1,7 +1,9 @@
 version: '3'
 services:
   redirect:
+    container_name: redirect
     build: .
+    #image: vdbrink/redirect
     ports:
       - "8888:8888"
     environment:

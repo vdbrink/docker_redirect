@@ -14,7 +14,7 @@ fi
 cat <<EOF > /etc/nginx/conf.d/default.conf
 server {
 	listen ${LISTEN};
-	rewrite ^/(.*)$ ${REDIRECT_URL}$1 permanent;
+	rewrite ^/(.*)$ ${REDIRECT_URL}/$1 permanent;
 }
 EOF
 

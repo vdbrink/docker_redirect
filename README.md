@@ -17,3 +17,33 @@ $ docker run --rm -d -e REDIRECT_URL=homeassistant://navigate $PORT=8888 -p 8888
 You can find [here](docker-compose.yaml) the docker-compose.yml file for this example.
 
 More details about deep linking in Home Assistant can be found here: https://companion.home-assistant.io/docs/integrations/url-handler/
+
+```bash
+mkdir redirect
+cd redirect
+wget https://raw.githubusercontent.com/vdbrink/docker_redirect/refs/heads/main/Dockerfile
+wget https://raw.githubusercontent.com/vdbrink/docker_redirect/refs/heads/main/start.sh
+docker build -t vdbrink/redirect .
+```
+
+This is the `docker-compose.yml` file:
+
+```yaml
+version: '3'
+services:
+  redirect:
+    container_name: redirect
+    image: vdbrink/redirect
+    ports:
+      - "8888:8888"
+    environment:
+      - REDIRECT_URL=homeassistant://navigate
+      - PORT=8888
+```
+
+```bash
+docker-compose up -d redirect
+```
+
+When you now access the host where this docker container is running on port 8888.
+For example, the url `http://dockerserver.local:8888/dashboard-mobile/my-subview` it will now redirect you to the Home Assistant companion app.
